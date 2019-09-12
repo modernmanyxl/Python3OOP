@@ -10,7 +10,7 @@ To: <{emails[1]}>
 Subject: {message['subject']}
 {message['message']}"""
 print(formatted)
-
+print("#------------------------------------------------------------------------")
 
 message["emails"] = emails
 
@@ -20,6 +20,8 @@ To: <{message['emails'][1]}>
 Subject: {message['subject']}
 {message['message']}"""
 print(formatted)
+
+print("#------------------------------------------------------------------------")
 
 
 class EMail:
