@@ -1,6 +1,8 @@
 import sys
 
-filename = sys.argv[1]
+filename = sys.argv[0]
+print(filename)
+
 
 with open(filename) as file:
     for index, line in enumerate(file):
