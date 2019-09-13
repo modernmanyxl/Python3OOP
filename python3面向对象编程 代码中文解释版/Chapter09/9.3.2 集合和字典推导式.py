@@ -1,5 +1,4 @@
 from collections import namedtuple
-
 Book = namedtuple("Book", "author title genre")
 books = [
     Book("Pratchett", "Nightwatch", "fantasy"),
@@ -10,8 +9,10 @@ books = [
     Book("Phillips", "Preston Diamond", "western"),
     Book("Phillips", "Twice Upon A Time", "scifi"),
 ]
-
-# set comprehension
+#集合推导式
 fantasy_authors = {b.author for b in books if b.genre == "fantasy"}
-# dict comprehension
+print(fantasy_authors)
+print("#------------------------------------------------------------------------")
+#字典推导式
 fantasy_titles = {b.title: b for b in books if b.genre == "fantasy"}
+print(fantasy_titles)

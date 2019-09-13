@@ -1,13 +1,13 @@
 import sys
 
-filename = sys.argv[1]
+filename = sys.argv[0]
 
 with open(filename) as file:
     header = file.readline().strip().split("\t")
     contacts = [
         dict(zip(header, line.strip().split("\t"))) for line in file
     ]
-
+print(contacts)
 for contact in contacts:
     print("email: {email} -- {last}, {first}".format(**contact))
 
