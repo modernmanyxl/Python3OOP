@@ -1,3 +1,4 @@
+#没有运行成功,不知道什么作用,以后再补吧.
 class File:
     def __init__(self, name):
         self.name = name
@@ -32,3 +33,4 @@ def walk(file):
             yield from walk(f)
     else:
         yield file.name
+walk(r"需要深入理解代码")

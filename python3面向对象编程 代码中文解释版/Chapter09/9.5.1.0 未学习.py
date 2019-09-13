@@ -1,3 +1,4 @@
+#暂时没有学习
 import re
 
 
@@ -26,5 +27,5 @@ def get_serials(filename):
             return
 
 
-for serial_number in get_serials("EXAMPLE_LOG.log"):
+for serial_number in get_serials("9.5.1.0 EXAMPLE_LOG.log"):
     print(serial_number)
