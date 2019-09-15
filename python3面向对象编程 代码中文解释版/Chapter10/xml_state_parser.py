@@ -26,6 +26,7 @@ class FirstTag:
 class ChildNode:
     def process(self, remaining_string, parser):
         stripped = remaining_string.strip()
+        #删除"remain_string"中头尾的空格
         if stripped.startswith("</"):
             parser.state = CloseTag()
         elif stripped.startswith("<"):
