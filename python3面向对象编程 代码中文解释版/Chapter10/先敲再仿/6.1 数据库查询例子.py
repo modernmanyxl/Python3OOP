@@ -1,3 +1,4 @@
+#之前学过了,这里略过吧
 import datetime
 import sqlite3
 
@@ -35,51 +36,51 @@ conn.commit()
 conn.close()
 
 
-class QueryTemplate:
+class 查询模板:
     def connect(self):
         self.conn = sqlite3.connect("sales.db")
 
-    def construct_query(self):
+    def 构造查询(self):
         raise NotImplementedError()
 
-    def do_query(self):
+    def 执行查询(self):
         results = self.conn.execute(self.query)
         self.results = results.fetchall()
 
-    def format_results(self):
-        output = []
+    def 格式化结果(self):
+        输出 = []
         for row in self.results:
             row = [str(i) for i in row]
-            output.append(", ".join(row))
-        self.formatted_results = "\n".join(output)
+            输出.append(", ".join(row))
+        self.formatted_results = "\n".join(输出)
 
-    def output_results(self):
+    def 输出结果(self):
         raise NotImplementedError()
 
     def process_format(self):
         self.connect()
-        self.construct_query()
-        self.do_query()
-        self.format_results()
-        self.output_results()
+        self.构造查询()
+        self.执行查询()
+        self.格式化结果()
+        self.输出结果()
 
 
-class NewVehiclesQuery(QueryTemplate):
-    def construct_query(self):
+class 车辆销量查询(查询模板):
+    def 构造查询(self):
         self.query = "select * from Sales where new='true'"
 
-    def output_results(self):
+    def 输出结果(self):
         print(self.formatted_results)
 
 
-class UserGrossQuery(QueryTemplate):
-    def construct_query(self):
+class 用户销量查询(查询模板):
+    def 构造查询(self):
         self.query = (
             "select salesperson, sum(amt) "
             + " from Sales group by salesperson"
         )
 
-    def output_results(self):
+    def 输出结果(self):
         filename = "gross_sales_{0}".format(
             datetime.date.today().strftime("%Y%m%d")
         )
