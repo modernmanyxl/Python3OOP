@@ -7,7 +7,7 @@ def average(seq):
 
 class TestAverage(unittest.TestCase):
     def test_zero(self):
-        self.assertRaises(ZeroDivisionError, average, [])
+        self.assertRaises(ZeroDivisionError, average, [1,2,3])
 
     def test_with_zero(self):
         with self.assertRaises(ZeroDivisionError):

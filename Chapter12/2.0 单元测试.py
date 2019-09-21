@@ -2,10 +2,10 @@ import unittest
 
 
 class CheckNumbers(unittest.TestCase):
-    def test_int_float(self):
+    def test整数小数(self):
         self.assertEqual(1, 1.0)
 
-    def test_str_float(self):
+    def test字符串小数(self):
         self.assertEqual(1, "1")
 
 
