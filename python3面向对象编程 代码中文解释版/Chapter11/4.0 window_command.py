@@ -1,12 +1,12 @@
 import sys
 
-
 class Window:
+    """receiver"""
     def exit(self):
         sys.exit(0)
 
-
 class Document:
+    """receiver"""
     def __init__(self, filename):
         self.filename = filename
         self.contents = "This file cannot be modified"
@@ -17,6 +17,7 @@ class Document:
 
 
 class ToolbarButton:
+    """invoker"""
     def __init__(self, name, iconname):
         self.name = name
         self.iconname = iconname
@@ -26,6 +27,7 @@ class ToolbarButton:
 
 
 class MenuItem:
+    """invoker"""
     def __init__(self, menu_name, menuitem_name):
         self.menu = menu_name
         self.item = menuitem_name
@@ -35,6 +37,7 @@ class MenuItem:
 
 
 class KeyboardShortcut:
+    """invoker"""
     def __init__(self, key, modifier):
         self.key = key
         self.modifier = modifier
@@ -44,6 +47,7 @@ class KeyboardShortcut:
 
 
 class SaveCommand:
+    """command"""
     def __init__(self, document):
         self.document = document
 
@@ -52,6 +56,7 @@ class SaveCommand:
 
 
 class ExitCommand:
+    """command"""
     def __init__(self, window):
         self.window = window
 

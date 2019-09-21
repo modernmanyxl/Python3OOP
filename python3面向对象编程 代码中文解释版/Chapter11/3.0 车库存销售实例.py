@@ -1,5 +1,5 @@
 import weakref
-
+#略过,到用的时候再回来学吧.
 
 class CarModel:
     _models = weakref.WeakValueDictionary()
