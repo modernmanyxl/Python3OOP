@@ -1,5 +1,6 @@
+
 import pytest
-from 2stats import StatsList
+from stats import StatsList
 
 
 @pytest.fixture

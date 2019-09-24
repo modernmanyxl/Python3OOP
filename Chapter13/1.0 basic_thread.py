@@ -1,6 +1,5 @@
 from threading import Thread
 
-
 class InputReader(Thread):
     def run(self):
         self.line_of_text = input()
@@ -8,7 +7,7 @@ class InputReader(Thread):
 
 print("Enter some text and press enter: ")
 thread = InputReader()
-thread.start()
+thread.run()
 
 count = result = 1
 while thread.is_alive():
