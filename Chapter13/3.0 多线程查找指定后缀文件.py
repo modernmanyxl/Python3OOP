@@ -9,13 +9,13 @@ def 查找文件(路径, 要查询的后缀):
         if p.is_dir() and not p.is_symlink() and not p.match("System Volume Information"):
             子目录们.append(p)
         if 要查询的后缀 in p的完整路径:
-            #print(p的完整路径)
+            print(p的完整路径)
             pass
     return 子目录们
 
 
 根目录 = Path("\\").absolute()
-文件后缀 = ".py"
+文件后缀 = ".jpg"
 
 序列池 = deque()
 
