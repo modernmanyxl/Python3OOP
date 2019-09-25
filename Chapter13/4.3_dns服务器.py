@@ -1,7 +1,9 @@
+#这个程序运行在lunix
+#使用 "python3 文件名(带后缀)"直接运行
 import asyncio
 from contextlib import suppress
 
-ip_map = {
+IP字典 = {
     b"facebook.com.": "173.252.120.6",
     b"yougov.com.": "213.52.133.246",
     b"wipo.int.": "193.5.93.80",
@@ -9,7 +11,7 @@ ip_map = {
 }
 
 
-def lookup_dns(data):
+def 查找dns(data):
     domain = b""
     pointer, part_length = 13, data[12]
     while part_length:
@@ -17,12 +19,12 @@ def lookup_dns(data):
         pointer += part_length + 1
         part_length = data[pointer - 1]
 
-    ip = ip_map.get(domain, "127.0.0.1")
+    ip = IP字典.get(domain, "127.0.0.1")
 
     return domain, ip
 
 
-def create_response(data, ip):
+def 创建响应(data, ip):
     ba = bytearray
     packet = ba(data[:2]) + ba([129, 128]) + data[4:6] * 2
     packet += ba(4) + data[12:]
@@ -32,25 +34,25 @@ def create_response(data, ip):
     return packet
 
 
-class DNSProtocol(asyncio.DatagramProtocol):
+class DNS协议(asyncio.DatagramProtocol):
     def connection_made(self, transport):
         self.transport = transport
 
     def datagram_received(self, data, addr):
-        print("Received request from {}".format(addr[0]))
-        domain, ip = lookup_dns(data)
+        print("从{}接收请求".format(addr[0]))
+        domain, ip = 查找dns(data)
         print(
-            "Sending IP {} for {} to {}".format(
+            "发送IP{}给{}到{}".format(
                 domain.decode(), ip, addr[0]
             )
         )
-        self.transport.sendto(create_response(data, ip), addr)
+        self.transport.sendto(创建响应(data, ip), addr)
 
 
 loop = asyncio.get_event_loop()
 transport, protocol = loop.run_until_complete(
     loop.create_datagram_endpoint(
-        DNSProtocol, local_addr=("127.0.0.1", 4343)
+        DNS协议, local_addr=("127.0.0.1", 4343)
     )
 )
 print("DNS Server running")
