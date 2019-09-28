@@ -1,3 +1,4 @@
+#TCP模式
 import asyncio
 import json
 from concurrent.futures import ProcessPoolExecutor
